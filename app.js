@@ -1,6 +1,6 @@
 import {getStudentByIdAPI,getStudentsAPI,addStudentAPI} from "./api.js";
 
-let localStudentDb = getStudentsAPI();
+let localStudentDb = []
 
 let studentForm = document.getElementById("studentForm");
 let studentTableBody = document.querySelector(".table-panel tbody");
@@ -25,7 +25,6 @@ renderTable(localStudentDb);
 
 studentForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    //let firstName = document.getElementById("firstName").value;
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let email = document.getElementById("email").value;
@@ -40,13 +39,16 @@ studentForm.addEventListener("submit", (event) => {
         return;
     }
     
-    // check proper email format
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         alert("Please enter a valid email address");
+        return;
+    } else if (localStudentDb.some(student => student.email === email)) {
+        alert("Email already exists in the database");
         return;
     }
     
     let newStudent = addStudentAPI({ firstName, lastName, email })
+    localStudentDb.push(newStudent);
     renderTable(localStudentDb);
     studentForm.reset();
 
