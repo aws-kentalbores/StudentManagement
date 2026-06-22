@@ -9,6 +9,10 @@ let button = document.getElementById("submitButton");
 
 let renderTable = (dataArray) => {
     studentTableBody.innerHTML = "";
+    if (dataArray.length === 0) {
+        studentTableBody.innerHTML = "<tr><td colspan='4' style='text-align: center;'>No students found</td></tr>";
+        return;
+    }
     dataArray.forEach(student => {
         let row = document.createElement("tr");
         row.innerHTML = `
