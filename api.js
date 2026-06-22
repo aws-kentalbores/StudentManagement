@@ -45,3 +45,5 @@ let main = () => {
 
 
 main();
+
+export { getStudentsAPI, getStudentByIdAPI, addStudentAPI };
