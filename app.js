@@ -56,7 +56,6 @@ studentForm.addEventListener("submit", (event) => {
 
 
 const initApp = () => {
-    console.log("Initial DB State: ", getStudentsAPI());
     renderTable(localStudentDb);
 }
 
