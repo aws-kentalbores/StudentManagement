@@ -33,11 +33,13 @@ let addStudentAPI = (student) => {
 let main = () => {
     console.log("Initial DB State: ", getStudentsAPI());
 
-
     // Test 2
 
     let newStudent = new Student("This", "Is", "A Test");
-    mockStudentDb.push(newStudent);
+    let addedStudent = addStudentAPI(newStudent);
+
+    console.log("Added Student: ", addedStudent);
+
 
     console.log("DB State after adding a new student: ", getStudentsAPI());
 
